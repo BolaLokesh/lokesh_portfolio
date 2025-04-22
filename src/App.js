@@ -4,7 +4,6 @@ import React from 'react';
 function App() {
   return (
     <div>
-      <h1>Hello, Lokesh's React App is Back!</h1>
     </div>
   );
 }
