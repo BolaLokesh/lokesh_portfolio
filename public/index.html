@@ -1,43 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bola Lokesh Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    nav {
+      background-color: #333;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      font-size: 16px;
+      width: 16.6%;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section {
+      padding: 10px 15px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    section p,
+    section ul {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .home {
+      padding: 50px 15px;
+      background-color: #ff9800;
+      color: white;
+    }
+
+    .home h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .home .wave {
+      display: inline-block;
+    }
+
+    @keyframes shake {
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      20% {
+        transform: rotate(15deg);
+      }
+
+      40% {
+        transform: rotate(-10deg);
+      }
+
+      60% {
+        transform: rotate(10deg);
+      }
+
+      80% {
+        transform: rotate(-5deg);
+      }
+    }
+
+    .wave {
+      animation: shake 1s ease;
+      animation-fill-mode: forwards;
+    }
+
+    /* Profile container */
+    .profile-container {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .profile-container img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-container:hover {
+      animation: none;
+    }
+
+    .home h1 {
+      font-weight: bold;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .home p {
+      font-size: 18px;
+      font-style: italic;
+    }
+
+   #skills .skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#skills .skills-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+#skills .skill {
+  text-align: center;
+  margin: 10px;
+  width: 120px; /* Adjust width as needed */
+}
+
+#skills img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+
+    .contact p {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .contact .contact-info {
+      font-size: 16px;
+      color: #555;
+      margin-top: 15px;
+    }
+
+    .contact a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .contact a:hover {
+      color: #ff9800;
+    }
+
+    .project-box {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      transition: transform 0.3s ease;
+    }
+
+    .project-box:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .project-summary {
+      margin-top: 10px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .github-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .github-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .tech-stack {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tech-btn {
+      padding: 6px 12px;
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .tech-btn:hover {
+      background-color: #e0e0e0;
+    }
+
+#contact {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+#contact h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#contact p {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #555;
+}
+
+.contact-icon {
+  color: black;
+  margin-right: 10px;
+}
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 3px;
+      background-color: #444;
+      transition: background-color 0.3s ease;
+    }
+
+    footer a:hover {
+      background-color: #555;
+    }
+    
+
+    @media (max-width: 768px) {
+      nav a {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+      }
+
+      .profile-container {
+        width: 100px;
+        height: 100px;
+      }
+
+      .profile-container img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .home h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <section id="home" class="home">
+    <h3><span class="wave" title="Hello 👋">🖐️</span> Hi, I am Lokesh</h3>
+    <div class="profile-container">
+      <img src="Lokesh-photo.jpg" alt="Bola Lokesh">
+    </div>
+    <h1>Bola Lokesh</h1>
+    <p>Full Stack Developer</p>
+    <br>
+    <a href="https://drive.google.com/file/d/1ggvGxDTTbzrV3J-uhXMtTCz6wgctqrkR/view?usp=sharing" target="_blank" class="github-btn">View Resume</a>
+  </section>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <section id="about">
+    <h2>About</h2>
+    <p>I'm a Full Stack Developer skilled in Java, Python, Node.js, and React.</p>
+    <p>I've worked with Spring Boot, Hibernate, and MySQL to build web applications.</p>
+    <p>I'm passionate about creating scalable solutions and optimizing performance.</p>
+    <p>I'm a quick learner, problem solver, and eager to take on new challenges.</p>
+  </section>
+
+  <section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-container">
+    <div class="skills-row">
+      <div class="skill">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML">
+        <p>HTML</p>
+      </div>
+      <div class="skill">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS">
+        <p>CSS</p>
+      </div>
+      <div class="skill">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript">
+        <p>JavaScript</p>
+      </div>
+      <div class="skill">
+        <img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="Java">
+        <p>Java</p>
+      </div>
+    </div>
+    <div class="skills-row">
+      <div class="skill">
+        <img src="https://cdn-icons-png.flaticon.com/512/528/528260.png" alt="MySQL">
+        <p>MySQL</p>
+      </div>
+      <div class="skill">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python">
+        <p>Python</p>
+      </div>
+      <div class="skill">
+        <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="React">
+        <p>React</p>
+      </div>
+      <div class="skill">
+        <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="Spring Boot">
+        <p>Spring Boot</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <section id="projects">
+  <h2>Projects</h2>
+  <div class="project-box">
+    <div class="project-title">Electric Bill Generator</div>
+    <div class="project-summary">Developed a real-time web application using Spring Boot, JSP, and MySQL for generating electricity bills and managing user data.</div>
+    <a href="https://github.com/BolaLokesh/Electronic-Bill-Generator" target="_blank" class="github-btn">View on GitHub</a>
+    <div class="tech-stack">
+      <span class="tech-btn">Spring Boot</span>
+      <span class="tech-btn">JSP</span>
+      <span class="tech-btn">MySQL</span>
+    </div>
+  </div>
+  <div class="project-box">
+    <div class="project-title">E-commerce Platform</div>
+    <div class="project-summary">Built a full-stack e-commerce platform with React, Node.js, and MySQL, with features like product listings and user authentication.</div>
+    <a href="https://github.com/BolaLokesh/ecommerce" target="_blank" class="github-btn">View on GitHub</a>
+    <div class="tech-stack">
+      <span class="tech-btn">React</span>
+      <span class="tech-btn">Node.js</span>
+      <span class="tech-btn">MySQL</span>
+      <span class="tech-btn">AWS</span>
+    </div>
+  </div>
+
+  <!-- New Project -->
+  <div class="project-box">
+    <div class="project-title">QuizMaker</div>
+    <div class="project-summary">An interactive web-based quiz platform that allows users to create, take, and track quizzes with real-time scoring and leaderboard features.</div>
+    <a href="https://github.com/BolaLokesh/QuizMaker" target="_blank" class="github-btn">View on GitHub</a>
+    <div class="tech-stack">
+      <span class="tech-btn">React</span>
+      <span class="tech-btn">Spring Boot</span>
+      <span class="tech-btn">MySQL</span>
+    </div>
+  </div>
+</section>
+
+  <section id="contact">
+  <h2>Contact</h2>
+  <p><i class="fas fa-envelope contact-icon"></i> bolalokesh21@gmail.com</p>
+  <p><i class="fas fa-phone contact-icon"></i> +91 9381860805</p>
+  <p><i class="fas fa-map-marker-alt contact-icon"></i> Proddatur, India</p>
+</section>
+
+
+  <footer>
+    <p>Made with Bola Lokesh</p>
+    <br>
+    <a href="#home">Back to Top</a>
+  </footer>
+
+</body>
+
 </html>
